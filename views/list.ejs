@@ -12,36 +12,39 @@
   </head>
   <body>
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
+      <div class="container-fluid py-5 col-8">
         <h1 class="display-5 fw-bold">
           Today is <%= specificDay %> and its <%= dayToday %>
         </h1>
-        <h3>To do list:</h3>
 
-        <form action="/" method="post">
-          <div class="input-group mb-3">
-            <input
-              name="toDoList"
-              type="text"
-              class="form-control"
-              placeholder="Add list"
-              required="true"
-            />
-            <button
-              class="btn btn-outline-secondary"
-              type="submit"
-              name="button"
-              id="button-addon2"
-            >
-              Add
-            </button>
-          </div>
-        </form>
-        <ul>
-          <% for (var i = 1; i < newListItem.length; i++) { %>
-          <li><%= newListItem[i] %></li>
-          <% } %>
-        </ul>
+        <div class="display-5 fw-bold mt-5">
+          <h3>To do list:</h3>
+
+          <form action="/" method="post" class="form col-4 text-center">
+            <div class="input-group mb-3">
+              <input
+                name="toDoList"
+                type="text"
+                class="form-control"
+                placeholder="Add list"
+                required="true"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                name="button"
+                id="button-addon2"
+              >
+                +
+              </button>
+            </div>
+          </form>
+          <ul>
+            <% for (var i = 1; i < newListItem.length; i++) { %>
+            <li><%= newListItem[i] %></li>
+            <% } %>
+          </ul>
+        </div>
       </div>
     </div>
 
