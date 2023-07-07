@@ -1,10 +1,26 @@
 // jshint esversion:7
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const app = express();
 
+let inputs = [""];
+
+// using EJS; npm i ejs
+app.set("view engine", "ejs");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.listen(3000, function () {
+  console.log("Server port 3000 started");
+});
+
 app.get("/", function (req, res) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   const today = new Date();
   const currentDay = today.getDay();
   const dayNames = [
@@ -17,15 +33,23 @@ app.get("/", function (req, res) {
     "Saturday",
   ];
 
+  let whatDay = "";
+
   if (currentDay === 6 || currentDay === 0) {
-    res.write(`<h1>Today is ${dayNames[currentDay]} and its weekend</h1>`);
-    res.send();
+    whatDay = "Weekend";
   } else {
-    res.write(`<h1>Today is ${dayNames[currentDay]} and its weekday</h1>`);
-    res.send();
+    whatDay = "Weekday";
   }
+  res.render("list", {
+    dayToday: whatDay,
+    specificDay: dayNames[currentDay],
+    newListItem: inputs,
+  });
 });
 
-app.listen(3000, function () {
-  console.log("Server port 3000 started");
+app.post("/", function (req, res) {
+  const input = req.body.toDoList;
+  inputs.push(input);
+  //   insted of adding newListItem, move it to the first res.render, and add redirect route to start again the app.get
+  res.redirect("/");
 });
