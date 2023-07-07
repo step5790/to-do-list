@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do List v1</title>
   </head>
   <body>
-    <h1>Today is <%= specificDay %> and its <%= dayToday %></h1>
-    <form action="/" method="post">
-      <input type="text" name="toDoList" />
-      <button type="submit" name="button">Add</button>
-    </form>
-    <ul>
-      <% for (var i = 1; i < newListItem.length; i++) { %>
-      <li><%= newListItem[i] %></li>
-      <% } %>
-    </ul>
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">
+          Today is <%= specificDay %> and its <%= dayToday %>
+        </h1>
+        <h3>To do list:</h3>
+
+        <form action="/" method="post">
+          <div class="input-group mb-3">
+            <input
+              name="toDoList"
+              type="text"
+              class="form-control"
+              placeholder="Add list"
+              required="true"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="submit"
+              name="button"
+              id="button-addon2"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+        <ul>
+          <% for (var i = 1; i < newListItem.length; i++) { %>
+          <li><%= newListItem[i] %></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js
+    "></script>
   </body>
 </html>
