@@ -3,12 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-let inputs = [""];
-
 // using EJS; npm i ejs
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
+
+let inputs = [""];
 
 app.listen(3000, function () {
   console.log("Server port 3000 started");
