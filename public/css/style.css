@@ -1,0 +1,9 @@
+li {
+  list-style: none;
+  font-size: 2rem;
+}
+
+.form-check-input:checked + label {
+  color: red;
+  text-decoration: line-through;
+}
